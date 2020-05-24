@@ -1,13 +1,14 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(aubo_planner)
 
-find_package(catkin REQUIRED COMPONENTS aubo_msgs  moveit_core moveit_ros_planning moveit_ros_planning_interface pluginlib cmake_modules)
+#find_package(catkin REQUIRED COMPONENTS aubo_msgs  moveit_core moveit_ros_planning moveit_ros_planning_interface pluginlib cmake_modules)
 
 find_package(Boost REQUIRED system filesystem date_time thread)
 
 find_package(catkin REQUIRED COMPONENTS roscpp std_msgs sensor_msgs
   control_msgs trajectory_msgs actionlib_msgs actionlib
-  urdf industrial_msgs industrial_utils)
+  #urdf industrial_msgs industrial_utils)
+  urdf industrial_msgs industrial_utils aubo_msgs  moveit_core moveit_ros_planning moveit_ros_planning_interface pluginlib cmake_modules)
 
 if("$ENV{ROS_DISTRO}" STREQUAL "kinetic")
     find_package(Eigen3 REQUIRED)

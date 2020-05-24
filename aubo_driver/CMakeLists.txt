@@ -67,8 +67,8 @@ install(DIRECTORY include/${PROJECT_NAME}/
    FILES_MATCHING PATTERN "*.h"
  )
 
-add_dependencies(aubo_driver aubo_msgs_gencpp)
-add_dependencies(testIO aubo_msgs_gencpp)
-add_dependencies(testAuboAPI aubo_msgs_gencpp)
+add_dependencies(aubo_driver ${catkin_EXPORTED_TARGETS})# aubo_msgs_gencpp)
+add_dependencies(testIO ${catkin_EXPORTED_TARGETS})# aubo_msgs_gencpp)
+add_dependencies(testAuboAPI ${catkin_EXPORTED_TARGETS})# aubo_msgs_gencpp)
 
 
