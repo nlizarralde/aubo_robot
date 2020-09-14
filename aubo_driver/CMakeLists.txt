@@ -6,11 +6,12 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
   aubo_msgs
+	logger
 )
 
 catkin_package(
   INCLUDE_DIRS include
-  CATKIN_DEPENDS sensor_msgs roscpp std_msgs aubo_msgs
+  CATKIN_DEPENDS sensor_msgs roscpp std_msgs aubo_msgs logger
 )
 
 
@@ -44,11 +45,15 @@ set(${PROJECT_NAME}_SOURCES2
 set(${PROJECT_NAME}_SOURCES3
     src/testAuboAPI.cpp
 )
+set(${PROJECT_NAME}_SOURCES15
+    src/sendJointPos.cpp
+)
 
 add_executable(aubo_driver ${${PROJECT_NAME}_SOURCES1})
 add_executable(testIO ${${PROJECT_NAME}_SOURCES2})
 add_executable(testAuboAPI ${${PROJECT_NAME}_SOURCES3})
 add_executable(aubo_gazebo_driver src/aubo_gazebo_driver.cpp)
+add_executable(sendJointPos ${${PROJECT_NAME}_SOURCES15})
 
 #LINK_LIBRARIES(${CMAKE_CURRENT_SOURCE_DIR}/lib)
 
@@ -56,6 +61,7 @@ target_link_libraries(aubo_driver pthread ${catkin_LIBRARIES} auborobotcontrolle
 target_link_libraries(testAuboAPI ${catkin_LIBRARIES} auborobotcontroller otgLib)
 target_link_libraries(testIO ${catkin_LIBRARIES} otgLib)
 target_link_libraries(aubo_gazebo_driver ${catkin_LIBRARIES})
+target_link_libraries(sendJointPos ${catkin_LIBRARIES} libauborobotcontroller.so libotgLib.a)
 
 
 
